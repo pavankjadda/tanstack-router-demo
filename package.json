@@ -25,7 +25,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.77.4",
-    "axios": "^1.7.2"
+    "axios": "^1.7.2",
+    "yup": "^1.3.2"
   },
   "devDependencies": {
     "@tanstack/router-devtools": "^1.34.9",

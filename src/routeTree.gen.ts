@@ -13,18 +13,18 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as HelpImport } from './routes/help'
-import { Route as BooksFindImport } from './routes/books/find'
-import { Route as BooksAllImport } from './routes/books/all'
-import { Route as BooksIdImport } from './routes/books/$id'
 
 // Create Virtual Routes
 
 const ProfileLazyImport = createFileRoute('/profile')()
 const LogoutLazyImport = createFileRoute('/logout')()
 const LoginLazyImport = createFileRoute('/login')()
+const HelpLazyImport = createFileRoute('/help')()
 const FaqLazyImport = createFileRoute('/faq')()
 const IndexLazyImport = createFileRoute('/')()
+const BooksFindLazyImport = createFileRoute('/books/find')()
+const BooksAllLazyImport = createFileRoute('/books/all')()
+const BooksIdLazyImport = createFileRoute('/books/$id')()
 
 // Create/Update Routes
 
@@ -43,35 +43,35 @@ const LoginLazyRoute = LoginLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
 
+const HelpLazyRoute = HelpLazyImport.update({
+  path: '/help',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/help.lazy').then((d) => d.Route))
+
 const FaqLazyRoute = FaqLazyImport.update({
   path: '/faq',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/faq.lazy').then((d) => d.Route))
-
-const HelpRoute = HelpImport.update({
-  path: '/help',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const BooksFindRoute = BooksFindImport.update({
+const BooksFindLazyRoute = BooksFindLazyImport.update({
   path: '/books/find',
   getParentRoute: () => rootRoute,
-} as any)
+} as any).lazy(() => import('./routes/books/find.lazy').then((d) => d.Route))
 
-const BooksAllRoute = BooksAllImport.update({
+const BooksAllLazyRoute = BooksAllLazyImport.update({
   path: '/books/all',
   getParentRoute: () => rootRoute,
-} as any)
+} as any).lazy(() => import('./routes/books/all.lazy').then((d) => d.Route))
 
-const BooksIdRoute = BooksIdImport.update({
+const BooksIdLazyRoute = BooksIdLazyImport.update({
   path: '/books/$id',
   getParentRoute: () => rootRoute,
-} as any)
+} as any).lazy(() => import('./routes/books/$id.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -84,18 +84,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/help': {
-      id: '/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof HelpImport
-      parentRoute: typeof rootRoute
-    }
     '/faq': {
       id: '/faq'
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpLazyImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -123,21 +123,21 @@ declare module '@tanstack/react-router' {
       id: '/books/$id'
       path: '/books/$id'
       fullPath: '/books/$id'
-      preLoaderRoute: typeof BooksIdImport
+      preLoaderRoute: typeof BooksIdLazyImport
       parentRoute: typeof rootRoute
     }
     '/books/all': {
       id: '/books/all'
       path: '/books/all'
       fullPath: '/books/all'
-      preLoaderRoute: typeof BooksAllImport
+      preLoaderRoute: typeof BooksAllLazyImport
       parentRoute: typeof rootRoute
     }
     '/books/find': {
       id: '/books/find'
       path: '/books/find'
       fullPath: '/books/find'
-      preLoaderRoute: typeof BooksFindImport
+      preLoaderRoute: typeof BooksFindLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -147,14 +147,14 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  HelpRoute,
   FaqLazyRoute,
+  HelpLazyRoute,
   LoginLazyRoute,
   LogoutLazyRoute,
   ProfileLazyRoute,
-  BooksIdRoute,
-  BooksAllRoute,
-  BooksFindRoute,
+  BooksIdLazyRoute,
+  BooksAllLazyRoute,
+  BooksFindLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -166,8 +166,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/help",
         "/faq",
+        "/help",
         "/login",
         "/logout",
         "/profile",
@@ -179,11 +179,11 @@ export const routeTree = rootRoute.addChildren({
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/help": {
-      "filePath": "help.tsx"
-    },
     "/faq": {
       "filePath": "faq.lazy.tsx"
+    },
+    "/help": {
+      "filePath": "help.lazy.tsx"
     },
     "/login": {
       "filePath": "login.lazy.tsx"
@@ -195,13 +195,13 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "profile.lazy.tsx"
     },
     "/books/$id": {
-      "filePath": "books/$id.tsx"
+      "filePath": "books/$id.lazy.tsx"
     },
     "/books/all": {
-      "filePath": "books/all.tsx"
+      "filePath": "books/all.lazy.tsx"
     },
     "/books/find": {
-      "filePath": "books/find.tsx"
+      "filePath": "books/find.lazy.tsx"
     }
   }
 }
