@@ -5,7 +5,7 @@ import { BookService } from '../../../services/BookService';
 import { Link, useParams } from '@tanstack/react-router';
 
 function ViewBook() {
-	const { id } = useParams();
+	const { id } = useParams({ from: '/books/$id' });
 	const { data } = useQuery({
 		queryKey: ['books'],
 		queryFn: () => BookService.getAllBooks(),
@@ -33,7 +33,7 @@ function ViewBook() {
 					</p>
 
 					<br />
-					<Link to={'/book/all'}>
+					<Link to={'/books/all'}>
 						<Button variant="contained">
 							<ChevronLeftIcon />
 							View All Books

@@ -42,7 +42,7 @@ function DrawerContent(): React.JSX.Element {
 					</ListItem>
 
 					{/* All Books */}
-					<ListItem button key="All Books" onClick={() => navigate({ to: '/book/all' })}>
+					<ListItem button key="All Books" onClick={() => navigate({ to: '/books/all' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon />}</ListItemIcon>
 						<ListItemText primary="All Books" />
 					</ListItem>

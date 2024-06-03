@@ -1,29 +1,23 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { Suspense } from 'react';
-import theme from '../theme.tsx';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import CssBaseline from '@mui/material/CssBaseline';
-import SideBarContainer from '../features/layout/side-bar/SideBarContainer.tsx';
-import { ThemeProvider } from '@mui/material';
+import { QueryClient } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+export const Route = createRootRouteWithContext<{
+	queryClient: QueryClient;
+}>()({
+	component: RootComponent,
+});
 
-export const Route = createRootRoute({
-	component: () => (
+function RootComponent() {
+	return (
 		<>
-			<ThemeProvider theme={theme}>
-				<QueryClientProvider client={queryClient}>
-					<ReactQueryDevtools initialIsOpen={false} />
-					<CssBaseline />
-					<SideBarContainer />
-				</QueryClientProvider>
-			</ThemeProvider>
-			<Outlet />
-			<Suspense>
-				<TanStackRouterDevtools />
+			<ReactQueryDevtools initialIsOpen={false} />
+			<TanStackRouterDevtools />
+			<Suspense fallback={<div>Loading...</div>}>
+				<Outlet />
 			</Suspense>
 		</>
-	),
-});
+	);
+}
