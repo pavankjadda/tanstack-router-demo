@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient } from '@tanstack/react-query';
 import theme from '../theme.tsx';
 import CssBaseline from '@mui/material/CssBaseline';
-import SideBarContainer from '../features/layout/side-bar/SideBarContainer.tsx';
+import LayoutContainer from '../features/layout/side-bar/LayoutContainer.tsx';
 import { ThemeProvider } from '@mui/material';
 
 export const Route = createRootRouteWithContext<{
@@ -17,15 +17,16 @@ export const Route = createRootRouteWithContext<{
 function RootComponent() {
 	return (
 		<>
-			<ReactQueryDevtools initialIsOpen={false} />
-			<TanStackRouterDevtools />
 			<Suspense fallback={<div>Loading...</div>}>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
-					<SideBarContainer />
-					<Outlet />
+					<LayoutContainer />
 				</ThemeProvider>
 			</Suspense>
+
+			<Outlet />
+			<ReactQueryDevtools initialIsOpen={false} />
+			<TanStackRouterDevtools />
 		</>
 	);
 }

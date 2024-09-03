@@ -12,16 +12,16 @@ export default function Faq(): React.JSX.Element {
 				<div style={{ marginTop: '30px' }}>
 					<Accordion expanded={true}>
 						<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-							<Typography style={{ fontWeight: 'bolder' }}>What is CRA Skeleton App?</Typography>
+							<Typography style={{ fontWeight: 'bolder' }}>What is Tanstack Router Demo?</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
-							<Typography>CRA Skeleton App is a web application built on React</Typography>
+							<Typography>Tanstack Router Demo is a web application built on React</Typography>
 						</AccordionDetails>
 					</Accordion>
 
 					<Accordion expanded={true}>
 						<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
-							<Typography style={{ fontWeight: 'bolder' }}>How do I login to CRA Skeleton App?</Typography>
+							<Typography style={{ fontWeight: 'bolder' }}>How do I login to Tanstack Router Demo?</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography>Go to Login page, enter your username and password and click Login.</Typography>
@@ -34,7 +34,7 @@ export default function Faq(): React.JSX.Element {
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography component={'span'}>
-								CRA Skeleton App supports following browsers
+								Tanstack Router Demo supports following browsers
 								<ul>
 									<li>Google Chrome</li>
 									<li>Mozilla Firefox</li>
@@ -48,11 +48,11 @@ export default function Faq(): React.JSX.Element {
 
 					<Accordion expanded={true}>
 						<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2a-content" id="panel2a-header">
-							<Typography style={{ fontWeight: 'bolder' }}>I am new to CRA Skeleton App, whom should I contact for access?</Typography>
+							<Typography style={{ fontWeight: 'bolder' }}>I am new to Tanstack Router Demo, whom should I contact for access?</Typography>
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography>
-								Contact CRA Skeleton App support by clicking on <b> Need Assistance </b>button present at bottom of the every page
+								Contact Tanstack Router Demo support by clicking on <b> Need Assistance </b>button present at bottom of the every page
 							</Typography>
 						</AccordionDetails>
 					</Accordion>

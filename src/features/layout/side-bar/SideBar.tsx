@@ -9,6 +9,7 @@ import ReactIf from '../../../components/ReactIf';
 
 export default function SideBar(): React.JSX.Element {
 	const drawerOpen = useSelector((state: RootState) => state.preferences.drawerOpen);
+
 	return (
 		<div>
 			{/* Show in Desktop View (Hide in Tablet/Mobile View) */}

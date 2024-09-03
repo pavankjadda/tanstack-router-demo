@@ -22,27 +22,27 @@ function DrawerContent(): React.JSX.Element {
 	const navigate = useNavigate();
 
 	return (
-		<div>
+		<>
 			<div className={styles.drawerContainer}>
-				<h5 className={styles.banner}>CRA Skeleton App</h5>
+				<h5 className={styles.banner}>Tanstack Router Demo</h5>
 				<Divider className={styles.divider} />
 
 				{/* Book Section */}
 				<List style={{ marginTop: '20px' }}>
 					{/* Home */}
-					<ListItem key="Home" component="button" onClick={() => navigate({ to: '/' })}>
+					<ListItem key="Home" component="a" onClick={() => navigate({ to: '/' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<HomeIcon />}</ListItemIcon>
 						<ListItemText primary="Home" />
 					</ListItem>
 
 					{/* Find Book */}
-					<ListItem component="button" key="Book Search" onClick={() => navigate({ to: '/books/find' })}>
+					<ListItem component="a" key="Book Search" onClick={() => navigate({ to: '/books/find' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<SearchIcon />}</ListItemIcon>
 						<ListItemText primary="Find Book" />
 					</ListItem>
 
 					{/* All Books */}
-					<ListItem component="button" key="All Books" onClick={() => navigate({ to: '/books/all' })}>
+					<ListItem component="a" key="All Books" onClick={() => navigate({ to: '/books/all' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon />}</ListItemIcon>
 						<ListItemText primary="All Books" />
 					</ListItem>
@@ -53,12 +53,12 @@ function DrawerContent(): React.JSX.Element {
 				{/* Help Section */}
 				<List>
 					{/* Account */}
-					<ListItem component="button" key="Account" onClick={() => navigate({ to: '/profile' })}>
+					<ListItem component="a" key="Account" onClick={() => navigate({ to: '/profile' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<AccountCircleIcon />}</ListItemIcon>
 						<ListItemText primary="Account" />
 					</ListItem>
 					{/* Help */}
-					<ListItem component="button" key="Home" onClick={() => navigate({ to: '/help' })}>
+					<ListItem component="a" key="Home" onClick={() => navigate({ to: '/help' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<HelpIcon />}</ListItemIcon>
 						<ListItemText primary="Help" />
 					</ListItem>
@@ -69,7 +69,7 @@ function DrawerContent(): React.JSX.Element {
 					</ListItem>
 				</List>
 			</div>
-		</div>
+		</>
 	);
 }
 

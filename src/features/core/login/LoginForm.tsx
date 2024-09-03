@@ -81,7 +81,7 @@ export default function LoginForm(): React.JSX.Element {
 				//Check if user has proper roles to log in to the system
 				if (response.data.authorities.find((authority) => authority.name === ROLE_CORE_USER) === undefined) {
 					setLoadingState(
-						markError(loadingState, 'Login unsuccessful. You are not authorized to login into CRA Skeleton App. Please contact support')
+						markError(loadingState, 'Login unsuccessful. You are not authorized to login into Tanstack Router Demo. Please contact support')
 					);
 				} else {
 					setLoadingState((loadingState) => ({
