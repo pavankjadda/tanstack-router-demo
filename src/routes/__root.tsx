@@ -3,6 +3,10 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { Suspense } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient } from '@tanstack/react-query';
+import { ThemeProvider } from '@mui/material';
+import theme from '../theme.tsx';
+import CssBaseline from '@mui/material/CssBaseline';
+import SideBarContainer from '../features/layout/side-bar/SideBarContainer.tsx';
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;
@@ -16,7 +20,11 @@ function RootComponent() {
 			<ReactQueryDevtools initialIsOpen={false} />
 			<TanStackRouterDevtools />
 			<Suspense fallback={<div>Loading...</div>}>
-				<Outlet />
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<SideBarContainer />
+					<Outlet />
+				</ThemeProvider>
 			</Suspense>
 		</>
 	);

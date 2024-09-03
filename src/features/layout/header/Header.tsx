@@ -16,7 +16,6 @@ export default function Header(): React.JSX.Element {
 	const dispatch = useDispatch();
 	const drawerOpen = useSelector((state: RootState) => state.preferences.drawerOpen);
 	const { isUserLoggedIn } = useAuthService();
-
 	return (
 		<div>
 			{/* Header when user not logged in */}

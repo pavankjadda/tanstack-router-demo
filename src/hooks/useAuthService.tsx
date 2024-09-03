@@ -19,7 +19,8 @@ export default function useAuthService(): {
 	 * @since 1.0.0
 	 */
 	function isUserLoggedIn(): boolean {
-		return getCookie('isLoggedIn') === 'true';
+		return true;
+		//return getCookie('isLoggedIn') === 'true';
 	}
 
 	/**
@@ -29,7 +30,8 @@ export default function useAuthService(): {
 	 * @since 1.0.0
 	 */
 	function isLoggedIn(): boolean {
-		return getCookie('isLoggedIn') === 'true';
+		return true;
+		//return getCookie('isLoggedIn') === 'true';
 	}
 
 	/**
