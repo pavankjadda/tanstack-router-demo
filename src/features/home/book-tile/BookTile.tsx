@@ -22,7 +22,7 @@ export default function BookTile() {
 							</ListItemButton>
 						</ListItem>
 						<ListItem disablePadding>
-							<ListItemButton onClick={() => navigate({ to: '/book/all' })}>
+							<ListItemButton onClick={() => navigate({ to: '/books/all' })}>
 								<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon color={'primary'} />}</ListItemIcon>
 								<ListItemText primary="See All Books" />
 							</ListItemButton>

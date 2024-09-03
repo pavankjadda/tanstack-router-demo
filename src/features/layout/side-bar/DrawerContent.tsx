@@ -30,19 +30,19 @@ function DrawerContent(): React.JSX.Element {
 				{/* Book Section */}
 				<List style={{ marginTop: '20px' }}>
 					{/* Home */}
-					<ListItem button key="Home" onClick={() => navigate({ to: '/' })}>
+					<ListItem key="Home" component="button" onClick={() => navigate({ to: '/' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<HomeIcon />}</ListItemIcon>
 						<ListItemText primary="Home" />
 					</ListItem>
 
 					{/* Find Book */}
-					<ListItem button key="Book Search" onClick={() => navigate({ to: '/books/find' })}>
+					<ListItem component="button" key="Book Search" onClick={() => navigate({ to: '/books/find' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<SearchIcon />}</ListItemIcon>
 						<ListItemText primary="Find Book" />
 					</ListItem>
 
 					{/* All Books */}
-					<ListItem button key="All Books" onClick={() => navigate({ to: '/books/all' })}>
+					<ListItem component="button" key="All Books" onClick={() => navigate({ to: '/books/all' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon />}</ListItemIcon>
 						<ListItemText primary="All Books" />
 					</ListItem>
@@ -53,12 +53,12 @@ function DrawerContent(): React.JSX.Element {
 				{/* Help Section */}
 				<List>
 					{/* Account */}
-					<ListItem button key="Account" onClick={() => navigate({ to: '/profile' })}>
+					<ListItem component="button" key="Account" onClick={() => navigate({ to: '/profile' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<AccountCircleIcon />}</ListItemIcon>
 						<ListItemText primary="Account" />
 					</ListItem>
 					{/* Help */}
-					<ListItem button key="Home" onClick={() => navigate({ to: '/help' })}>
+					<ListItem component="button" key="Home" onClick={() => navigate({ to: '/help' })}>
 						<ListItemIcon className={styles.listItemIcon}>{<HelpIcon />}</ListItemIcon>
 						<ListItemText primary="Help" />
 					</ListItem>
