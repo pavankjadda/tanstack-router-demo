@@ -24,7 +24,7 @@ export default function Profile(): React.JSX.Element {
 	}, [user]);
 
 	return (
-		<Card>
+		<Card elevation={24}>
 			<Typography style={{ margin: '10px' }} className="custom-flex-justify-center" variant="h4" component="div">
 				Profile
 			</Typography>

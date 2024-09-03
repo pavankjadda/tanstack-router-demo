@@ -4,10 +4,6 @@ import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen.ts';
-import { ThemeProvider } from '@mui/material';
-import theme from './theme.tsx';
-import CssBaseline from '@mui/material/CssBaseline';
-import LayoutContainer from './features/layout/side-bar/LayoutContainer.tsx';
 
 const queryClient = new QueryClient();
 
@@ -29,17 +25,6 @@ declare module '@tanstack/react-router' {
 	}
 }
 
-export default function App() {
-	return (
-		<>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<LayoutContainer />
-			</ThemeProvider>
-		</>
-	);
-}
-
 const rootElement = document.getElementById('root')!;
 
 if (!rootElement.innerHTML) {
@@ -48,7 +33,6 @@ if (!rootElement.innerHTML) {
 		<Provider store={store}>
 			<QueryClientProvider client={queryClient}>
 				<RouterProvider router={router} defaultPreload="intent" />
-				{router ? <App /> : null}
 			</QueryClientProvider>
 		</Provider>
 	);
