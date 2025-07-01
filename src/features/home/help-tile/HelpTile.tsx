@@ -8,14 +8,14 @@ import { useNavigate } from '@tanstack/react-router';
 export default function HelpTile(): React.JSX.Element {
 	const navigate = useNavigate();
 	return (
-		<Grid container size={12} className="app-flex-justify-center" sx={{ mt: 5 }}>
+		<Grid container size={12} className="app-flex-justify-center" sx={{ m: 3, mt: 6 }}>
 			<Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 9 }}>
 				<Card elevation={24}>
 					<Typography style={{ margin: '10px' }} className="custom-flex-justify-center" fontWeight={'bold'} variant="h4">
 						Help
 					</Typography>
 					<Divider />
-					<CardContent className="row custom-flex-justify-center">
+					<CardContent>
 						<List>
 							<ListItem disablePadding>
 								<ListItemButton>

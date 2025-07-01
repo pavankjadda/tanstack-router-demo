@@ -1,6 +1,6 @@
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
 import { QueryClient } from '@tanstack/react-query';
-import Layout from '../components/layout/side-bar/Layout.tsx';
+import Layout from '../components/layout/Layout.tsx';
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;

@@ -1,4 +1,4 @@
-import { Alert, Card, CardContent, Checkbox, Divider, List, ListItem, ListItemButton, Typography } from '@mui/material';
+import { Alert, Card, CardContent, Checkbox, Divider, Grid, List, ListItem, ListItemButton, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { User } from '../user/User';
 import useCookies from '@js-smart/react-cookie-service';
@@ -24,74 +24,78 @@ export default function Profile(): React.JSX.Element {
 	}, [user]);
 
 	return (
-		<Card elevation={24}>
-			<Typography style={{ margin: '10px' }} className="custom-flex-justify-center" variant="h4" component="div">
-				Profile
-			</Typography>
-			<Divider />
+		<Grid container size={12} className="custom-flex-justify-center" sx={{ mt: 6 }}>
+			<Grid size={{ lg: 11, xl: 11 }}>
+				<Card elevation={24}>
+					<Typography style={{ margin: '10px' }} className="custom-flex-justify-center" variant="h4" component="div">
+						Profile
+					</Typography>
+					<Divider />
 
-			{/* Alert */}
-			<ReactIf condition={!loadingState.loading && loadingState.error}>
-				<Alert severity="error">Unable to get profile information, please try again after sometime</Alert>
-			</ReactIf>
+					{/* Alert */}
+					<ReactIf condition={!loadingState.loading && loadingState.error}>
+						<Alert severity="error">Unable to get profile information, please try again after sometime</Alert>
+					</ReactIf>
 
-			{/* Basic Information */}
-			<CardContent>
-				<Typography style={{ marginBottom: '30px', fontWeight: 'bold' }} variant="h6" component="div">
-					Basic Information
-				</Typography>
+					{/* Basic Information */}
+					<CardContent>
+						<Typography style={{ marginBottom: '30px', fontWeight: 'bold' }} variant="h6" component="div">
+							Basic Information
+						</Typography>
 
-				<div className="row" style={{ marginLeft: '10px' }}>
-					<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-						<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
-							First Name:
-						</label>
-						<label className="row">{userProfile?.firstName}</label>
-					</div>
-					<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-						<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
-							Last Name:
-						</label>
-						<label className="row">{userProfile?.lastName}</label>
-					</div>
-				</div>
+						<div className="row" style={{ marginLeft: '10px' }}>
+							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
+									First Name:
+								</label>
+								<label className="row">{userProfile?.firstName}</label>
+							</div>
+							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
+									Last Name:
+								</label>
+								<label className="row">{userProfile?.lastName}</label>
+							</div>
+						</div>
 
-				<div className="row" style={{ marginLeft: '10px' }}>
-					<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-						<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
-							Username:
-						</label>
-						<label className="row">{user?.username}</label>
-					</div>
+						<div className="row" style={{ marginLeft: '10px' }}>
+							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
+									Username:
+								</label>
+								<label className="row">{user?.username}</label>
+							</div>
 
-					<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-						<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
-							Email:
-						</label>
-						<label className="row">{userProfile?.email}</label>
-					</div>
-				</div>
-			</CardContent>
+							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<label style={{ fontWeight: 'bold', marginRight: '1rem' }} className="row">
+									Email:
+								</label>
+								<label className="row">{userProfile?.email}</label>
+							</div>
+						</div>
+					</CardContent>
 
-			<Divider />
+					<Divider />
 
-			{/* Assigned AD Groups */}
-			<CardContent>
-				<Typography style={{ marginBottom: '20px', fontWeight: 'bold' }} variant="h6" component="div">
-					Assigned Groups
-				</Typography>
+					{/* Assigned AD Groups */}
+					<CardContent>
+						<Typography style={{ marginBottom: '20px', fontWeight: 'bold' }} variant="h6" component="div">
+							Assigned Groups
+						</Typography>
 
-				<List>
-					{userProfile?.groups?.map((group) => (
-						<ListItem key={group.adGroupName} disablePadding>
-							<ListItemButton>
-								<Checkbox edge="start" checked={true} tabIndex={-1} disabled={true} disableRipple />
-								{group?.adGroupName}
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List>
-			</CardContent>
-		</Card>
+						<List>
+							{userProfile?.groups?.map((group) => (
+								<ListItem key={group.adGroupName} disablePadding>
+									<ListItemButton>
+										<Checkbox edge="start" checked={true} tabIndex={-1} disabled={true} disableRipple />
+										{group?.adGroupName}
+									</ListItemButton>
+								</ListItem>
+							))}
+						</List>
+					</CardContent>
+				</Card>
+			</Grid>
+		</Grid>
 	);
 }

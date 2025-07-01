@@ -7,7 +7,7 @@ import { useNavigate } from '@tanstack/react-router';
 export default function BookTile() {
 	const navigate = useNavigate();
 	return (
-		<Grid container size={12} className="app-flex-justify-center">
+		<Grid container size={12} className="app-flex-justify-center" sx={{ m: 3, mt: 6 }}>
 			<Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 9 }}>
 				<Card elevation={24}>
 					<Typography style={{ margin: '10px' }} className="custom-flex-justify-center" fontWeight={'bold'} variant="h4">
@@ -19,13 +19,13 @@ export default function BookTile() {
 						<CardContent>
 							<List>
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate({ to: '/books/find' })}>
+									<ListItemButton onClick={() => navigate({ to: '/book/find' })}>
 										<ListItemIcon className={styles.listItemIcon}>{<FindInPageIcon color={'primary'} />}</ListItemIcon>
 										<ListItemText primary="Find Book" />
 									</ListItemButton>
 								</ListItem>
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate({ to: '/books/all' })}>
+									<ListItemButton onClick={() => navigate({ to: '/book/all' })}>
 										<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon color={'primary'} />}</ListItemIcon>
 										<ListItemText primary="See All Books" />
 									</ListItemButton>

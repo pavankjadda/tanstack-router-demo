@@ -35,13 +35,13 @@ export function SideBarContent(): React.JSX.Element {
 				</ListItem>
 
 				{/* Find Book */}
-				<ListItem component="a" key="Book Search" onClick={() => navigate({ to: '/books/find' })}>
+				<ListItem component="a" key="Book Search" onClick={() => navigate({ to: '/book/find' })}>
 					<ListItemIcon className={styles.listItemIcon}>{<SearchIcon />}</ListItemIcon>
 					<ListItemText primary="Find Book" />
 				</ListItem>
 
 				{/* All Books */}
-				<ListItem component="a" key="All Books" onClick={() => navigate({ to: '/books/all' })}>
+				<ListItem component="a" key="All Books" onClick={() => navigate({ to: '/book/all' })}>
 					<ListItemIcon className={styles.listItemIcon}>{<FormatListBulletedIcon />}</ListItemIcon>
 					<ListItemText primary="All Books" />
 				</ListItem>

@@ -5,7 +5,7 @@ import { BookService } from '../../../services/BookService';
 import { Link, useParams } from '@tanstack/react-router';
 
 function ViewBook() {
-	const { id } = useParams({ from: '/books/$id' });
+	const { id } = useParams({ from: '/book/$id' });
 	const { data } = useQuery({
 		queryKey: ['books'],
 		queryFn: () => BookService.getAllBooks(),
@@ -14,8 +14,8 @@ function ViewBook() {
 	const book = data?.find((b) => b?.id.toString() === id);
 
 	return (
-		<Grid container className="custom-flex-justify-center" style={{ height: 'auto', width: '100%' }}>
-			<Grid item xs={12} sm={12} md={12} lg={11} xl={11}>
+		<Grid container size={12} className="custom-flex-justify-center" sx={{ mt: 3 }}>
+			<Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 9 }}>
 				<Paper elevation={24} sx={{ m: 3, p: 3 }}>
 					<h2 className={'custom-flex-justify-center'}>View Book</h2>
 					<hr />
@@ -33,7 +33,7 @@ function ViewBook() {
 					</p>
 
 					<br />
-					<Link to={'/books/all'}>
+					<Link to={'/book/all'}>
 						<Button variant="contained">
 							<ChevronLeftIcon />
 							View All Books

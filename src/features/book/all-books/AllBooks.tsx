@@ -11,8 +11,8 @@ export default function AllBooks() {
 	});
 
 	return (
-		<Grid container className="custom-flex-justify-center" style={{ height: 'auto', width: '100%' }}>
-			<Grid size={{ xs: 12, sm: 12, md: 12, lg: 11, xl: 11 }}>
+		<Grid container size={12} className="custom-flex-justify-center" sx={{ mt: 3 }}>
+			<Grid size={{ lg: 11, xl: 11 }}>
 				<Paper elevation={24} style={{ marginTop: '30px' }}>
 					<h2 className={'custom-flex-justify-center'}>All Books</h2>
 					<div style={{ display: 'flex', height: '100%' }}>
@@ -26,7 +26,6 @@ export default function AllBooks() {
 								loading={isLoading}
 								rows={books ?? []}
 								columns={columns}
-								autoHeight={true}
 							/>
 						</div>
 					</div>
@@ -47,7 +46,11 @@ const columns: GridColDef[] = [
 		field: 'id',
 		headerName: 'ID',
 		flex: 1,
-		renderCell: (params: GridCellParams) => <Link to={'/books/' + params.row['id']}>{params.row['id']}</Link>,
+		renderCell: (params: GridCellParams) => (
+			<Link to={`/book/$id`} params={{ id: params.row['id'] }}>
+				{params.row['id']}
+			</Link>
+		),
 	},
 	{ field: 'title', headerName: 'Title', flex: 2.5 },
 	{ field: 'isbn', headerName: 'ISBN', flex: 2.5 },
