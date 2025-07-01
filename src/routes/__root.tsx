@@ -1,7 +1,6 @@
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient } from '@tanstack/react-query';
+import Layout from '../components/layout/side-bar/Layout.tsx';
 
 export const Route = createRootRouteWithContext<{
 	queryClient: QueryClient;
@@ -11,10 +10,8 @@ export const Route = createRootRouteWithContext<{
 
 function RootComponent() {
 	return (
-		<>
+		<Layout>
 			<Outlet />
-			<ReactQueryDevtools initialIsOpen={false} />
-			<TanStackRouterDevtools />
-		</>
+		</Layout>
 	);
 }

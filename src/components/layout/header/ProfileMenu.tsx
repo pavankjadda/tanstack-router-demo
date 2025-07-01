@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import useCookies from '@js-smart/react-cookie-service';
-import { User } from '../../user/User';
+import { User } from '../../../features/user/User.tsx';
 import Logout from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';

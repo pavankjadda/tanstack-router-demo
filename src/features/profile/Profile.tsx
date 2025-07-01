@@ -4,8 +4,8 @@ import { User } from '../user/User';
 import useCookies from '@js-smart/react-cookie-service';
 import { UserService } from '../../services/UserService';
 import { ProgressState } from '../../components/ProgressState';
-import ReactIf from '../../components/ReactIf';
 import { initializeState, markError, markSuccess } from '../../util/UpdateStateUtils';
+import { ReactIf } from '@js-smart/react-kit';
 
 export default function Profile(): React.JSX.Element {
 	const { check, getCookie } = useCookies();

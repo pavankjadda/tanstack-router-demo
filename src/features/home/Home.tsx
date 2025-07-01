@@ -6,9 +6,9 @@ import { ProgressState } from '../../components/ProgressState';
 import { initializeState, markError, markLoading, markSuccess } from '../../util/UpdateStateUtils';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../state/reducers/UserReducer';
-import ReactIf from '../../components/ReactIf';
 import { Alert } from '@mui/material';
 import useCookies from '@js-smart/react-cookie-service';
+import { ReactIf } from '@js-smart/react-kit';
 
 export default function Home(): React.JSX.Element {
 	const [loadingState, setLoadingState] = useState<ProgressState>(initializeState());
@@ -35,7 +35,7 @@ export default function Home(): React.JSX.Element {
 	}, []);
 
 	return (
-		<div className="container-fluid">
+		<>
 			{/* Alert block */}
 			<ReactIf condition={!loadingState.loading && loadingState.error}>
 				<div className="row">
@@ -47,6 +47,6 @@ export default function Home(): React.JSX.Element {
 
 			<BookTile />
 			<HelpTile />
-		</div>
+		</>
 	);
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import styles from '../../layout/side-bar/SideBar.module.scss';
+import styles from '../../../components/layout/side-bar/SideBar.module.scss';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';

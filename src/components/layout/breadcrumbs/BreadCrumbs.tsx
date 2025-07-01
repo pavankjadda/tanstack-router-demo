@@ -3,7 +3,9 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import React from 'react';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useQuery } from '@tanstack/react-query';
-import { BookService } from '../../../services/BookService';
+import { BookService } from '../../../services/BookService.ts';
+import { useMatch } from '@tanstack/react-router';
+import RouterLink from '../../RouterLink.tsx';
 
 export default function BreadCrumbs(): React.JSX.Element {
 	const { data } = useQuery({
@@ -11,19 +13,19 @@ export default function BreadCrumbs(): React.JSX.Element {
 		queryFn: () => BookService.getAllBooks(),
 	});
 
-	const { pathname } = useLocation();
-	const homeMatches = matchPath('/*', pathname) || matchPath('/home', pathname);
-	const faqMatches = matchPath('/faq', pathname);
-	const profileMatches = matchPath('/profile', pathname);
-	const bookMatches = matchPath('/books/*', pathname);
-	const booksAllMatches = matchPath('/book/all', pathname);
-	const bookViewMatches = matchPath('/books/:id', pathname);
-	const bookFindMatches = matchPath('/books/find', pathname);
-
+	const rootMatches = useMatch({ from: '/' });
+	const homeMatches = useMatch({ from: '/home' });
+	const faqMatches = useMatch({ from: '/faq' });
+	const profileMatches = useMatch({ from: '/profile' });
+	const bookMatches = useMatch({ from: '/book/' });
+	const booksAllMatches = useMatch({ from: '/book/all' });
+	const bookViewMatches = useMatch({ from: '/book/$id' });
+	const bookFindMatches = useMatch({ from: '/book/find' });
+	
 	return (
 		<>
 			<Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
-				{homeMatches && (
+				{(rootMatches || homeMatches) && (
 					<Link underline="hover" color="inherit" component={RouterLink} to="/">
 						Home
 					</Link>

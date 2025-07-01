@@ -1,6 +1,3 @@
-@import '../../../assets/css/custom-variables.module';
-
-
 //.appBar {
 //  zIndex: theme.zIndex.drawer + 1,
 //},
@@ -15,17 +12,13 @@
 
 
 .listItemIcon {
-  color: $white-color !important;
+  color: var(--white-color) !important;
   min-width: auto !important;
   padding-right: inherit !important;
 }
 
 .divider {
   border-bottom: 2px solid white !important;
-}
-
-.drawerContainer {
-  overflow: auto !important;
 }
 
 .drawer {
@@ -35,8 +28,8 @@
 
 .drawerPaper {
   width: 300px !important;
-  background-color: $primary-color !important;
-  color: $white-color !important;
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
 }
 
 // Hide Side in Medium and lower size devices

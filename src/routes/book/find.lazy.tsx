@@ -1,8 +1,8 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
-import Layout from '../../features/layout/side-bar/Layout.tsx';
+import Layout from '../../components/layout/side-bar/Layout.tsx';
 import FindBook from '../../features/book/find-book/FindBook.tsx';
 
-export const Route = createLazyFileRoute('/books/find')({
+export const Route = createLazyFileRoute('/book/find')({
 	component: () => <FindBookPage />,
 });
 

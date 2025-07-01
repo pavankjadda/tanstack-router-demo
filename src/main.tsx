@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen.ts';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ if (!rootElement.innerHTML) {
 		<Provider store={store}>
 			<QueryClientProvider client={queryClient}>
 				<RouterProvider router={router} defaultPreload="intent" />
+				<ReactQueryDevtools />
 			</QueryClientProvider>
 		</Provider>
 	);

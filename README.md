@@ -7,11 +7,11 @@ This is a demo project to show how to use the TanStack Router.
 1. Install dependencies
 
     ```bash
-    npm i
+    pnpm i
     ```
 
 2. Start the project
 
     ```bash
-    npm run start
+    pnpm run start
     ```

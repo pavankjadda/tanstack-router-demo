@@ -5,12 +5,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from './header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDrawerStatus } from '../../../state/reducers/PreferencesReducer';
-import ReactIf from '../../../components/ReactIf';
-import { RootState } from '../../../state/store';
-import useAuthService from '../../../hooks/useAuthService';
-import ProfileMenu from './ProfileMenu';
+import { toggleDrawerStatus } from '../../../state/reducers/PreferencesReducer.tsx';
+import { RootState } from '../../../state/store.tsx';
+import useAuthService from '../../../hooks/useAuthService.tsx';
+import ProfileMenu from './ProfileMenu.tsx';
 import { Link } from '@tanstack/react-router';
+import { ReactIf } from '@js-smart/react-kit';
 
 export default function Header(): React.JSX.Element {
 	const dispatch = useDispatch();
