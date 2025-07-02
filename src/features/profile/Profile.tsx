@@ -13,7 +13,7 @@ export default function Profile(): React.JSX.Element {
 	const [userProfile, setUserProfile] = useState<User | undefined>();
 	const [loadingState, setLoadingState] = useState<ProgressState>(initializeState());
 	useEffect(() => {
-		UserService.getUserProfileInformation(user?.username)
+		UserService.getUserProfileInformation()
 			.then((response) => {
 				setLoadingState(markSuccess(loadingState));
 				setUserProfile(response.data);

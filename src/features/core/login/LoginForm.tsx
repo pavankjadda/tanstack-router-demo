@@ -1,11 +1,8 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import useCookies from '@js-smart/react-cookie-service';
-import { LoadingButton } from '@mui/lab';
-import { Grid, TextField, Typography } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
 import { ProgressState } from '../../../components/ProgressState';
 import { ROLE_CORE_USER } from '../../../constants/AuthorityConstants';
 import { HTTP_403, HTTP_500 } from '../../../constants/HttpConstants';
@@ -15,17 +12,19 @@ import { resetReduxStore } from '../../../state/reducers/RootReducer';
 import { createUser } from '../../../state/reducers/UserReducer';
 import { isUndefinedOrNullOrEmpty } from '../../../util/StringUtils';
 import { initializeState, markError } from '../../../util/UpdateStateUtils';
+import { z } from 'zod';
 import './Login.scss';
 import { useLocation, useNavigate } from '@tanstack/react-router';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 interface LoginFormInput {
 	username: string;
 	password: string;
 }
 
-const schema = Yup.object({
-	username: Yup.string().max(40, 'Must be 40 characters or less').required('User name is Required'),
-	password: Yup.string().max(40, 'Must be 40 characters or less').required('Password is Required'),
+const schema = z.object({
+	username: z.string().max(40, 'Must be 40 characters or less'),
+	password: z.string().max(40, 'Must be 40 characters or less'),
 });
 
 export default function LoginForm(): React.JSX.Element {
@@ -39,7 +38,7 @@ export default function LoginForm(): React.JSX.Element {
 		formState: { errors },
 		handleSubmit,
 	} = useForm<LoginFormInput>({
-		resolver: yupResolver(schema),
+		resolver: zodResolver(schema),
 		mode: 'all',
 	});
 
@@ -98,9 +97,12 @@ export default function LoginForm(): React.JSX.Element {
 					dispatch(createUser(response.data));
 
 					// Navigate to previous page or home page
-					navigate(
-						isUndefinedOrNullOrEmpty(getCookie('redirectUrl')) || getCookie('redirectUrl') === '/login' ? '/home' : getCookie('redirectUrl')
-					);
+					navigate({
+						to:
+							isUndefinedOrNullOrEmpty(getCookie('redirectUrl')) || getCookie('redirectUrl') === '/login'
+								? '/home'
+								: getCookie('redirectUrl'),
+					});
 				}
 			})
 			.catch((error) => {
@@ -140,7 +142,7 @@ export default function LoginForm(): React.JSX.Element {
 							variant="filled"
 							placeholder="Use your Username"
 							error={errors.username !== undefined}
-							helperText={errors.username && errors.username.message}
+							helperText={errors.username ? errors.username.message : null}
 							{...field}
 							required
 						/>
@@ -163,7 +165,7 @@ export default function LoginForm(): React.JSX.Element {
 							variant="filled"
 							placeholder="Use your Password"
 							error={errors.password !== undefined}
-							helperText={errors.password && errors.password.message}
+							helperText={errors.password ? errors.password.message : null}
 							{...field}
 							required
 						/>
@@ -173,7 +175,7 @@ export default function LoginForm(): React.JSX.Element {
 
 			{/* Submit button */}
 			<div className="custom-flex-justify-center" style={{ padding: '20px' }}>
-				<LoadingButton
+				<Button
 					style={{ minWidth: '200px' }}
 					type="submit"
 					loading={loadingState.loading}
@@ -182,11 +184,11 @@ export default function LoginForm(): React.JSX.Element {
 					variant="contained"
 					className="mx-auto">
 					Login
-				</LoadingButton>
+				</Button>
 			</div>
 			{/* Loading Error */}
 			<div className="row" style={{ padding: '20px' }}>
-				{!loadingState.loading && loadingState.error && <h6 style={{ color: 'red' }}>{loadingState.message}</h6>}
+				{!loadingState.loading && loadingState.error ? <h6 style={{ color: 'red' }}>{loadingState.message}</h6> : null}
 			</div>
 		</form>
 	);

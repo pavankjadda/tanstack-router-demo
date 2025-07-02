@@ -9,7 +9,6 @@ import { Book } from '../../types/Book';
  */
 export const bookManagerAdapter = createEntityAdapter<Book>({
 	// Assume IDs are stored in a field other than `books.id`
-	selectId: (book) => book.id,
 	// Keep the "all IDs" array sorted based on Protocol Number
 	sortComparer: (a, b) => a.isbn.localeCompare(b.isbn),
 });
